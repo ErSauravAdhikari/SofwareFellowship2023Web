@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Saved Values</title>
+  </head>
+  <body>
+    <h1>Saved Values</h1>
+    <ul>
+      {% for value in values %}
+      <li>Name: {{ value.name }}</li>
+      <li>Email: {{ value.email }}</li>
+      <li>Message: {{ value.message }}</li>
+      <br />
+      {% endfor %}
+    </ul>
+  </body>
+</html>
