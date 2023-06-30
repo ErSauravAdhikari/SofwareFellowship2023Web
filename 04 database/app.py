@@ -1,14 +1,20 @@
-from flask import Flask, request, render_template
+from flask import Flask, redirect, request, render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
-MONGODB_URL = "################################"
+MONGODB_URL = "################################################################"
 
 client = MongoClient(MONGODB_URL)
 
 db = client['default']
 collection = db['contact_us']
+
+
+
+@app.route('/')
+def list_values():
+    return render_template('list.html', values=collection.find())
 
 
 @app.route('/form', methods=['GET'])
@@ -24,15 +30,8 @@ def submit_form():
         'message': request.form['message']
     }
     collection.insert_one(data)
-    return 'Data saved successfully'
-
-@app.route('/list')
-def list_values():
-    values = []
-    for doc in collection.find():
-        values.append(doc)
-    return render_template('list.html', values=values)
+    return redirect("/")
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
