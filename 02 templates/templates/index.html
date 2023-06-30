@@ -2,19 +2,60 @@
 <html>
   <head>
     <title>Jinja Template Basics</title>
+    <style>
+      body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      p {
+        margin-bottom: 10px;
+        color: #666;
+      }
+
+      .adult {
+        color: #4caf50;
+      }
+
+      .almost {
+        color: #ff9800;
+      }
+
+      .not-adult {
+        color: #f44336;
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to the Jinja Template Basics</h1>
+    <div class="container">
+      <h1>Welcome to the Jinja Template Basics</h1>
 
-    <p>Name: {{ name }}</p>
-    <p>Age: {{ age }}</p>
+      <p>Name: <span>{{ name }}</span></p>
+      <p>Age: <span>{{ age }}</span></p>
 
-    {% if is_adult %}
-    <p>You are an adult.</p>
-    {% elif age == 17 %}
-    <p>Almost there buddy.</p>
-    {% else %}
-    <p>You are not an adult.</p>
-    {% endif %}
+      {% if is_adult %}
+      <p class="adult">You are an adult.</p>
+      {% elif age == 17 %}
+      <p class="almost">Almost there buddy.</p>
+      {% else %}
+      <p class="not-adult">You are not an adult.</p>
+      {% endif %}
+    </div>
   </body>
 </html>
